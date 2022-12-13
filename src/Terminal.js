@@ -3,18 +3,19 @@ import { homedir } from "node:os";
 import { COMMANDS } from "./constants.js";
 // helpers
 import {
-  getCwd,
+  printCwd,
   exitProcess,
-  throwSyntaxMsg,
-  removeExtraSpaces,
+  showSyntaxMsg,
   commandRules,
 } from "./helpers/index.js";
+// commands
+import commands from "./commands/index.js";
 
 class Terminal {
   initProcess({ startMsg, exitMsg }) {
     process.stdout.write(startMsg);
     process.chdir(homedir());
-    process.stdout.write(getCwd());
+    printCwd();
 
     process.stdin.on("data", (data) => {
       const chunk = data.toString().trim();
@@ -31,18 +32,37 @@ class Terminal {
 
   static validateCommand(command, args) {
     if (!COMMANDS.includes(command)) {
-      throwSyntaxMsg();
+      showSyntaxMsg();
+
       return false;
     }
 
     return commandRules[command](args);
   }
 
-  static handleCommands(data) {
-    const [command, ...args] = removeExtraSpaces(data).split(" ");
+  static splitCommandAndArgs(data) {
+    const spaceIdx = data.indexOf(" ");
+    let command = "";
+    let args = [];
 
-    if (Terminal.validateCommand(command, args)) {
-      console.log("DATA", data);
+    if (spaceIdx > 0) {
+      [command, args] = [data.slice(0, spaceIdx), data.slice(spaceIdx + 1)];
+    } else {
+      command = data.trim();
+    }
+
+    return {
+      command,
+      args,
+    };
+  }
+
+  static handleCommands(data) {
+    const { command, args } = Terminal.splitCommandAndArgs(data);
+    const isCommandValid = Terminal.validateCommand(command, args);
+
+    if (isCommandValid) {
+      commands[command](args);
     }
   }
 

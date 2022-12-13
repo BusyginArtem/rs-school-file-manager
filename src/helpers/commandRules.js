@@ -1,9 +1,9 @@
-import throwSyntaxMsg from "./throwSyntaxMsg.js";
+import showSyntaxMsg from "./showSyntaxMsg.js";
 
 export default {
   up: (args) => {
-    if (args.length) {
-      throwSyntaxMsg();
+    if (args) {
+      showSyntaxMsg();
 
       return false;
     }
@@ -11,30 +11,30 @@ export default {
     return true;
   },
   ls: (args) => {
-    if (args.length) {
-      throwSyntaxMsg();
+    if (args) {
+      showSyntaxMsg();
 
       return false;
     }
 
     return true;
   },
-  cd: () => {
-    if (args.length !== 1) {
-      throwSyntaxMsg();
+  cd: (args) => {
+    if (!args) {
+      showSyntaxMsg();
 
       return false;
     }
 
     return true;
   },
-  ls: () => {
-    if (args.length !== 1) {
-      throwSyntaxMsg();
+  // os: () => {
+  //   if (args.length !== 1) {
+  //     showSyntaxMsg();
 
-      return false;
-    }
+  //     return false;
+  //   }
 
-    return true;
-  },
+  //   return true;
+  // },
 };
