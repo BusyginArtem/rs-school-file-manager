@@ -5,3 +5,4 @@ export { default as removeExtraSpaces } from "./removeExtraSpaces.js";
 export { default as showSyntaxMsg } from './showSyntaxMsg.js';
 export { default as commandRules } from './commandRules.js';
 export { default as checkExistPath } from './checkExistPath.js';
+export { default as splitToPaths } from './splitToPaths.js';

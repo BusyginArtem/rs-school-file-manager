@@ -36,5 +36,42 @@ export default {
     }
 
     return true;
+  },  
+  cat: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },  
+  add: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },  
+  cp: (args) => {
+    // console.log(11111, args.split(" ").length);
+    if (args.split(" ").length !== 2) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  }, 
+  rn: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
   },
 };

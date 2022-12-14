@@ -7,7 +7,7 @@ const isWin = platform() === "win32" || platform() === "win64";
 
 export default async (path) => {
   try {
-    path = path.replace(/(^("|')|("|')$)/g, "");
+    path = path.replaceAll(/("|')/g, "");
 
     if (!path.startsWith("..")) {
       await checkExistPath(path);
@@ -27,7 +27,6 @@ export default async (path) => {
 
     printCwd();
   } catch (err) {
-    console.log("ERROR", err);
     showSyntaxMsg();
   }
 };
