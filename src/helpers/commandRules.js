@@ -28,13 +28,13 @@ export default {
 
     return true;
   },
-  // os: () => {
-  //   if (args.length !== 1) {
-  //     showSyntaxMsg();
+  os: (args) => {
+    if (!args) {
+      showSyntaxMsg();
 
-  //     return false;
-  //   }
+      return false;
+    }
 
-  //   return true;
-  // },
+    return true;
+  },
 };

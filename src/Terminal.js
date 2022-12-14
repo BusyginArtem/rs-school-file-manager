@@ -30,7 +30,7 @@ class Terminal {
     process.on("SIGINT", () => exitProcess(exitMsg));
   }
 
-  static validateCommand(command, args) {
+  static validateCommandNameAndArgs(command, args) {
     if (!COMMANDS.includes(command)) {
       showSyntaxMsg();
 
@@ -43,23 +43,23 @@ class Terminal {
   static splitCommandAndArgs(data) {
     const spaceIdx = data.indexOf(" ");
     let command = "";
-    let args = [];
+    let args = "";
 
     if (spaceIdx > 0) {
       [command, args] = [data.slice(0, spaceIdx), data.slice(spaceIdx + 1)];
     } else {
-      command = data.trim();
+      command = data;
     }
 
-    return {
-      command,
-      args,
-    };
+    return [
+      command.trim(),
+      args.trim(),
+    ];
   }
 
   static handleCommands(data) {
-    const { command, args } = Terminal.splitCommandAndArgs(data);
-    const isCommandValid = Terminal.validateCommand(command, args);
+    const [ command, args ] = Terminal.splitCommandAndArgs(data);
+    const isCommandValid = Terminal.validateCommandNameAndArgs(command, args);
 
     if (isCommandValid) {
       commands[command](args);
