@@ -1,13 +1,18 @@
 import { resolve, parse, sep } from "node:path";
 import { platform } from "node:os";
 // helpers
-import { checkExistPath, printCwd, showSyntaxMsg } from "../helpers/index.js";
+import {
+  checkExistPath,
+  printCwd,
+  removeQuotes,
+  showSyntaxMsg,
+} from "../helpers/index.js";
 
 const isWin = platform() === "win32" || platform() === "win64";
 
 export default async (path) => {
   try {
-    path = path.replaceAll(/("|')/g, "");
+    path = removeQuotes(path);
 
     if (!path.startsWith("..")) {
       await checkExistPath(path);

@@ -1,23 +1,20 @@
-// import { join } from "path";
-// import { rename } from "node:fs/promises";
-// // helpers
-// import { printCwd, showSyntaxMsg } from "../helpers/index.js";
+import { createReadStream, createWriteStream } from "fs";
+import { join } from "path";
+import { pipeline } from "stream";
+// helpers
+import { printCwd, showSyntaxMsg, splitToPaths } from "../helpers/index.js";
 
-// export default async (args) => {
-//   try {
-//     console.log("args ", args, args.split(" "));
-//     let [initialFile, targetFile] = args.split(" ");
-//     initialFile = initialFile.replaceAll(/("|')/g, "");
-//     targetFile = targetFile.replaceAll(/("|')/g, "");
+export default (args) => {
+  let [source, target] = splitToPaths(args);
 
-//     const initialFilePath = join(process.cwd(), initialFile);
-//     const targetFilePath = join(process.cwd(), targetFile);
+  const rreadStream = createReadStream(join(process.cwd(), source));
+  const writeStream = createWriteStream(join(process.cwd(), target));
 
-//     await rename(initialFilePath, targetFilePath);
-
-//     printCwd();
-//   } catch (error) {
-//     console.log("ERROR ", error);
-//     showSyntaxMsg();
-//   }
-// };
+  pipeline(rreadStream, writeStream, (err) => {
+    if (err) {
+      showSyntaxMsg();
+    } else {
+      printCwd();
+    }
+  });
+};

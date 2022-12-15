@@ -7,9 +7,6 @@ export default async (args) => {
   try {
     let [initialFile, targetFile] = splitToPaths(args);
 
-    initialFile = initialFile.replaceAll(/("|')/g, "");
-    targetFile = targetFile.replaceAll(/("|')/g, "");
-
     const initialFilePath = join(process.cwd(), initialFile);
     const targetFilePath = join(process.cwd(), targetFile);
 

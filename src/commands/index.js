@@ -4,8 +4,10 @@ import cd from "./cd.js";
 import os from "./os/index.js";
 import cat from "./cat.js";
 import add from "./add.js";
-// import cp from "./cp.js";
+import cp from "./cp.js";
 import rn from "./rn.js";
+import rm from "./rm.js";
+import mv from "./mv.js";
 
 export default {
   up,
@@ -14,6 +16,8 @@ export default {
   os,
   cat,
   add,
-  // cp,
+  cp,
   rn,
+  rm,
+  mv,
 };

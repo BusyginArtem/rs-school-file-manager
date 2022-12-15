@@ -1,3 +1,5 @@
+import removeQuotes from "./removeQuotes.js";
+
 export default (str) => {
   const symbols = str.trim().split("");
   let isQuotationOpened = false;
@@ -21,5 +23,8 @@ export default (str) => {
     }
   }
 
-  return [str.slice(0, spaceIdx), str.slice(spaceIdx + 1)];
+  return [
+    removeQuotes(str.slice(0, spaceIdx)),
+    removeQuotes(str.slice(spaceIdx + 1)),
+  ];
 };

@@ -1,11 +1,11 @@
 import { join } from "path";
 import { readFile } from "node:fs/promises";
 // helpers
-import { printCwd, showSyntaxMsg } from "../helpers/index.js";
+import { printCwd, removeQuotes, showSyntaxMsg } from "../helpers/index.js";
 
 export default async (path) => {
   try {
-    path = path.replaceAll(/("|')/g, "");
+    path = removeQuotes(path);
 
     const filePath = join(process.cwd(), path);
 

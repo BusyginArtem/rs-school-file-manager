@@ -36,7 +36,7 @@ export default {
     }
 
     return true;
-  },  
+  },
   cat: (args) => {
     if (!args) {
       showSyntaxMsg();
@@ -45,7 +45,7 @@ export default {
     }
 
     return true;
-  },  
+  },
   add: (args) => {
     if (!args) {
       showSyntaxMsg();
@@ -54,18 +54,35 @@ export default {
     }
 
     return true;
-  },  
+  },
   cp: (args) => {
-    // console.log(11111, args.split(" ").length);
-    if (args.split(" ").length !== 2) {
+    if (!args) {
       showSyntaxMsg();
 
       return false;
     }
 
     return true;
-  }, 
+  },
   rn: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },
+  rm: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },
+  mv: (args) => {
     if (!args) {
       showSyntaxMsg();
 
