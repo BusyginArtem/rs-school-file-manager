@@ -7,3 +7,4 @@ export { default as commandRules } from './commandRules.js';
 export { default as checkExistPath } from './checkExistPath.js';
 export { default as splitToPaths } from './splitToPaths.js';
 export { default as removeQuotes } from './removeQuotes.js';
+export { default as operationFailedMsg } from './operationFailedMsg.js';

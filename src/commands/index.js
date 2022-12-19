@@ -8,6 +8,9 @@ import cp from "./cp.js";
 import rn from "./rn.js";
 import rm from "./rm.js";
 import mv from "./mv.js";
+import hash from "./hash.js";
+import compress from "./compress.js";
+import decompress from "./decompress.js";
 
 export default {
   up,
@@ -20,4 +23,7 @@ export default {
   rn,
   rm,
   mv,
+  hash,
+  compress,
+  decompress,
 };

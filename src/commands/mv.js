@@ -3,7 +3,11 @@ import { unlink } from "node:fs/promises";
 import { join } from "path";
 import { pipeline } from "stream";
 // helpers
-import { printCwd, showSyntaxMsg, splitToPaths } from "../helpers/index.js";
+import {
+  printCwd,
+  operationFailedMsg,
+  splitToPaths,
+} from "../helpers/index.js";
 
 export default (args) => {
   let [source, target] = splitToPaths(args);
@@ -15,7 +19,7 @@ export default (args) => {
 
   pipeline(rreadStream, writeStream, async (err) => {
     if (err) {
-      showSyntaxMsg();
+      operationFailedMsg();
     } else {
       await unlink(sourceFilePath);
 

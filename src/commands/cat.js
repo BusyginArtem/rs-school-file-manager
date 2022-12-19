@@ -1,7 +1,11 @@
 import { join } from "path";
 import { readFile } from "node:fs/promises";
 // helpers
-import { printCwd, removeQuotes, showSyntaxMsg } from "../helpers/index.js";
+import {
+  printCwd,
+  removeQuotes,
+  operationFailedMsg,
+} from "../helpers/index.js";
 
 export default async (path) => {
   try {
@@ -14,6 +18,6 @@ export default async (path) => {
 
     printCwd();
   } catch (error) {
-    showSyntaxMsg();
+    operationFailedMsg();
   }
 };

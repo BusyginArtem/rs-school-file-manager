@@ -90,5 +90,32 @@ export default {
     }
 
     return true;
+  },  
+  hash: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },  
+  compress: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
+  },  
+  decompress: (args) => {
+    if (!args) {
+      showSyntaxMsg();
+
+      return false;
+    }
+
+    return true;
   },
 };

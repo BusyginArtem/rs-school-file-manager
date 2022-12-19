@@ -1,7 +1,11 @@
 import { join } from "path";
 import { rename } from "node:fs/promises";
 // helpers
-import { printCwd, showSyntaxMsg, splitToPaths } from "../helpers/index.js";
+import {
+  printCwd,
+  operationFailedMsg,
+  splitToPaths,
+} from "../helpers/index.js";
 
 export default async (args) => {
   try {
@@ -14,6 +18,6 @@ export default async (args) => {
 
     printCwd();
   } catch (error) {
-    showSyntaxMsg();
+    operationFailedMsg();
   }
 };

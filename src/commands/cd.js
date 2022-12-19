@@ -5,7 +5,7 @@ import {
   checkExistPath,
   printCwd,
   removeQuotes,
-  showSyntaxMsg,
+  operationFailedMsg,
 } from "../helpers/index.js";
 
 const isWin = platform() === "win32" || platform() === "win64";
@@ -32,6 +32,6 @@ export default async (path) => {
 
     printCwd();
   } catch (err) {
-    showSyntaxMsg();
+    operationFailedMsg();
   }
 };

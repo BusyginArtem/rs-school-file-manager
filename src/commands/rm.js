@@ -1,7 +1,11 @@
 import { unlink } from "node:fs/promises";
 import { join } from "path";
 // helpers
-import { printCwd, removeQuotes, showSyntaxMsg,  } from "../helpers/index.js";
+import {
+  printCwd,
+  removeQuotes,
+  operationFailedMsg,
+} from "../helpers/index.js";
 
 export default async (path) => {
   const sourceFilePath = join(process.cwd(), removeQuotes(path));
@@ -11,6 +15,6 @@ export default async (path) => {
 
     printCwd();
   } catch (error) {
-    showSyntaxMsg();
+    operationFailedMsg();
   }
 };
